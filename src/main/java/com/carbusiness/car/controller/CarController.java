@@ -43,7 +43,6 @@ public class CarController {
 		Car car  = new Car(0,"","",0);
 		model.put("car", car);
 		return "addcar";
-<<<<<<< HEAD
 	}
 	@RequestMapping(value="car/addcar", method = RequestMethod.POST)
 	public String addcarPosted(@Valid Car car, BindingResult result){
@@ -58,17 +57,4 @@ public class CarController {
 		carService.deleteCar(id);
 		return "redirect:allcars";
 	}
-=======
-	}
-	@RequestMapping(value="car/addcar", method = RequestMethod.POST)
-	public String addcarPosted(@Valid Car car, BindingResult result){
-		if (result.hasErrors()) {
-			return "addcar";
-		}
-		carService.addCar(car);
-		return "redirect:allcars";
-	}
-	
-	
->>>>>>> 3d67a6126cb86792ce7b39fb431f0c06f6770630
 }
