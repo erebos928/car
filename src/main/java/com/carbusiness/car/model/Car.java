@@ -49,5 +49,10 @@ public class Car {
 	public void setModel(long model) {
 		this.model = model;
 	}
+
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", color=" + color + ", brand=" + brand + ", model=" + model + "]";
+	}
 	
 }
