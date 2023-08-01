@@ -1,9 +1,16 @@
 package com.carbusiness.car.model;
 
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+
 public class Car {
 	private long id;
 	private String color;
+	@NotBlank
 	private String brand;
+	private static final long YEAR = 2023;
+	@Max(value=YEAR, message = "The year must be less than ${YEAR}")
 	private long model;
 
 	public Car() {
@@ -48,6 +55,11 @@ public class Car {
 
 	public void setModel(long model) {
 		this.model = model;
+	}
+
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", color=" + color + ", brand=" + brand + ", model=" + model + "]";
 	}
 	
 }

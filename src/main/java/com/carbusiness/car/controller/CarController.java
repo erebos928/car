@@ -2,14 +2,19 @@ package com.carbusiness.car.controller;
 
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.carbusiness.car.model.Car;
 import com.carbusiness.car.service.CarService;
 
-@RestController
+import jakarta.validation.Valid;
+
+@Controller
 public class CarController {
 	private CarService carService;
 
@@ -24,8 +29,25 @@ public class CarController {
 	}
 	
 	@RequestMapping("car/allcars")
-	public List<Car> getAllCars(){
-		return carService.findAllCars();
+	public String getAllCars(ModelMap model){
+		List<Car> cars = carService.findAllCars();
+		model.put("carsList", cars);
+		return "listall";
 	}
+	@RequestMapping(value="car/addcar", method = RequestMethod.GET)
+	public String addcar(ModelMap model){
+		Car car  = new Car(0,"","",0);
+		model.put("car", car);
+		return "addcar";
+	}
+	@RequestMapping(value="car/addcar", method = RequestMethod.POST)
+	public String addcarPosted(@Valid Car car, BindingResult result){
+		if (result.hasErrors()) {
+			return "addcar";
+		}
+		carService.addCar(car);
+		return "redirect:allcars";
+	}
+	
 	
 }
