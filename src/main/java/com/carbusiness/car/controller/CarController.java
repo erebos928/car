@@ -8,7 +8,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestParam;
+=======
+>>>>>>> 3d67a6126cb86792ce7b39fb431f0c06f6770630
 
 import com.carbusiness.car.model.Car;
 import com.carbusiness.car.service.CarService;
@@ -40,6 +43,7 @@ public class CarController {
 		Car car  = new Car(0,"","",0);
 		model.put("car", car);
 		return "addcar";
+<<<<<<< HEAD
 	}
 	@RequestMapping(value="car/addcar", method = RequestMethod.POST)
 	public String addcarPosted(@Valid Car car, BindingResult result){
@@ -54,4 +58,17 @@ public class CarController {
 		carService.deleteCar(id);
 		return "redirect:allcars";
 	}
+=======
+	}
+	@RequestMapping(value="car/addcar", method = RequestMethod.POST)
+	public String addcarPosted(@Valid Car car, BindingResult result){
+		if (result.hasErrors()) {
+			return "addcar";
+		}
+		carService.addCar(car);
+		return "redirect:allcars";
+	}
+	
+	
+>>>>>>> 3d67a6126cb86792ce7b39fb431f0c06f6770630
 }
