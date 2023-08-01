@@ -11,6 +11,7 @@
 <th> Brand</th>
 <th> Color</th>
 <th> Model</th>
+<th></th>
 </thead>
 <tbody>
 <c:forEach items="${carsList}" var="car" varStatus="index">
@@ -19,6 +20,7 @@
 <td>${car.brand}</td>
 <td>${car.color}</td>
 <td>${car.model}</td>
+<td><a href="deletecar?id=${car.id}" class="btn btn-danger">DELETE</a></td>
 </tr>
 </c:forEach>
 </tbody>

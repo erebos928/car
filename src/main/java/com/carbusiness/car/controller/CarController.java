@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.carbusiness.car.model.Car;
 import com.carbusiness.car.service.CarService;
@@ -23,8 +24,8 @@ public class CarController {
 		this.carService = carService;
 	}
 
-	@RequestMapping("car/{id}")
-	public Car getCar(@PathVariable long id) {
+	@RequestMapping("car")
+	public Car getCar(@RequestParam long id) {
 		return carService.findById(id);
 	}
 	
@@ -48,6 +49,9 @@ public class CarController {
 		carService.addCar(car);
 		return "redirect:allcars";
 	}
-	
-	
+	@RequestMapping(value="car/deletecar", method = RequestMethod.GET)
+	public String deleteCar(@RequestParam int id) {
+		carService.deleteCar(id);
+		return "redirect:allcars";
+	}
 }
