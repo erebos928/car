@@ -16,10 +16,7 @@ import ch.qos.logback.classic.Level;
 @Service
 public class CarService {
 	private static List<Car> cars = new ArrayList();
-<<<<<<< HEAD
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(CarService.class);
-=======
->>>>>>> 3d67a6126cb86792ce7b39fb431f0c06f6770630
 	private static int count = 0;
 	static {
 		
