@@ -8,11 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestParam;
-=======
->>>>>>> 3d67a6126cb86792ce7b39fb431f0c06f6770630
-
 import com.carbusiness.car.model.Car;
 import com.carbusiness.car.service.CarService;
 
