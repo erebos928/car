@@ -39,12 +39,9 @@ public class CarService {
 		cars.add(car);
 		
 	}
-<<<<<<< HEAD
 	public void deleteCar(int id) {
 		logger.debug("delete car id {0}",id);
 		cars.removeIf(car -> car.getId() == id);
 	}
-=======
->>>>>>> 3d67a6126cb86792ce7b39fb431f0c06f6770630
-	
+
 }
