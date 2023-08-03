@@ -24,9 +24,9 @@ public class CarController {
 		this.carService = carService;
 	}
 
-	@RequestMapping("car")
-	public Car getCar(@RequestParam long id) {
-		return carService.findById(id);
+	@RequestMapping("/")
+	public String root(ModelMap model) {
+		return getAllCars(model);
 	}
 	
 	@RequestMapping("car/allcars")
@@ -54,4 +54,16 @@ public class CarController {
 		carService.deleteCar(id);
 		return "redirect:allcars";
 	}
+	@RequestMapping(value="car/updatecar", method = RequestMethod.GET)
+	public String showUpdateCar(@RequestParam int id, ModelMap model) {
+		Car car = carService.findById(id);
+		model.put("car", car);
+		return "addcar";
+	}
+	@RequestMapping(value="car/updatecar", method = RequestMethod.POST)
+	public String updateCar(@Valid Car car,BindingResult result) {
+		carService.updateCar(car);
+		return "redirect:allcars";
+	}
+
 }

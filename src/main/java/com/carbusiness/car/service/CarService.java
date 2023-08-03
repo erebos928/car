@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.LogFactory;
+import org.apache.el.stream.Optional;
 import org.hibernate.validator.internal.util.logging.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.carbusiness.car.model.Car;
 
 import ch.qos.logback.classic.Level;
+import jakarta.validation.Valid;
 
 @Service
 public class CarService {
@@ -42,6 +44,14 @@ public class CarService {
 	public void deleteCar(int id) {
 		logger.debug("delete car id {0}",id);
 		cars.removeIf(car -> car.getId() == id);
+	}
+	public void updateCar(@Valid Car car) {
+		Car x = cars.stream().
+				filter(c -> c.getId() == car.getId()).findFirst().get();
+		logger.debug("old car");
+		
+		cars.remove(x);
+		cars.add(car);
 	}
 
 }

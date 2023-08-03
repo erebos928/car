@@ -7,13 +7,15 @@
 <body>
 <div class="container">
 <form:form action="" method="post" modelAttribute="car">
-<div class="form-group"><label>Brand:</label> 
+<fieldset>
+<div class="form-group"><form:label path="brand">Brand:</form:label> 
 <form:input class="form-control" type="text" path="brand"/>
 </div>
-<div class="form-group"><label>Color:</label> 
+</fieldset>
+<div class="form-group"><form:label path="color">Color:</form:label> 
 <form:input class="form-control" type="text" path="color"/>
 </div>
-<div class="form-group"><label>Model: </label>
+<div class="form-group"><form:label path="model">Model: </form:label>
 <form:input class="form-control" type="text" path="model"/>
 <form:errors path="model" cssClass="text-warning"/>
 </div>
